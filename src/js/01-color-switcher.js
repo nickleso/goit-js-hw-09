@@ -4,7 +4,7 @@ const refs = {
 };
 
 const COLOR_SWITCHER_DELAY = 1000;
-let intervalId = 1;
+let intervalId = null;
 refs.buttonStop.disabled = true;
 
 refs.buttonStart.addEventListener('click', onButtonClickStartSwitcher);

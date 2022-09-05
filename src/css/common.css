@@ -16,3 +16,25 @@ img {
   display: block;
   max-width: 100%;
 }
+
+/* timer styles */
+.timer {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value {
+  font-size: 40px;
+}
+
+.label {
+  font-size: 14px;
+  text-transform: uppercase;
+}
