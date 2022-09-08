@@ -18,7 +18,7 @@ refs.buttonStart.addEventListener('click', onButtonClickStartTimer);
 
 let intervalId = null;
 let startTime = 0;
-// let deadline = 0;
+let deadline = 0;
 
 const date = new Date();
 console.log(`Date now: ${Date.now()}`);
