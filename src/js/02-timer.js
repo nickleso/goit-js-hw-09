@@ -33,6 +33,11 @@ flatpickr('#datetime-picker', {
   onClose(selectedDates) {
     startTime = selectedDates[0].getTime();
     if (startTime > date) {
+      refs.daysLeft.style.color = '#000';
+      refs.hoursLeft.style.color = '#000';
+      refs.minutesLeft.style.color = '#000';
+      refs.secondsLeft.style.color = '#000';
+
       refs.buttonStart.disabled = false;
 
       console.log(`Start time: ${startTime}`);
@@ -55,7 +60,7 @@ function onButtonClickStartTimer() {
     const currentTime = Date.now();
     const deltaTime = startTime - currentTime;
     deadline = deltaTime;
-
+    refs.buttonStart.disabled = true;
     // console.log(`Deadline: ${deadline}`);
 
     convertMs(deadline);
@@ -101,6 +106,14 @@ function stopClockface(ms) {
 
   if (cutMs <= 0) {
     clearInterval(intervalId);
+    Notify.failure('Finish!', {
+      position: 'center-top',
+      fontSize: '14px',
+    });
+    Notify.warning('Reload page to set new timer!', {
+      position: 'center-top',
+      fontSize: '14px',
+    });
     refs.buttonStart.disabled = true;
 
     refs.daysLeft.style.color = '#f00';
