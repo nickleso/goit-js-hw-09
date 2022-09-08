@@ -1,5 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import 'notiflix/dist/notiflix-3.2.5.min.css';
 
 const refs = {
   buttonStart: document.querySelector('button[data-start]'),
@@ -36,7 +38,11 @@ flatpickr('#datetime-picker', {
       console.log(`Start time: ${startTime}`);
       return startTime;
     } else {
-      window.alert('Please choose a date in the future');
+      Notify.warning('Please choose a date in the future', {
+        position: 'center-top',
+        fontSize: '14px',
+      });
+      // window.alert('Please choose a date in the future');
       refs.buttonStart.disabled = true;
     }
   },
@@ -50,7 +56,7 @@ function onButtonClickStartTimer() {
     const deltaTime = startTime - currentTime;
     deadline = deltaTime;
 
-    console.log(`Deadline: ${deadline}`);
+    // console.log(`Deadline: ${deadline}`);
 
     convertMs(deadline);
     stopClockface(deadline);
@@ -91,7 +97,7 @@ function updateClockface({ days, hours, minutes, seconds }) {
 // stop timer
 function stopClockface(ms) {
   const cutMs = Math.trunc(ms * 0.001);
-  console.log(cutMs);
+  // console.log(cutMs);
 
   if (cutMs <= 0) {
     clearInterval(intervalId);
