@@ -110,10 +110,6 @@ function stopClockface(ms) {
       position: 'center-top',
       fontSize: '14px',
     });
-    Notify.warning('Reload page to set new timer!', {
-      position: 'center-top',
-      fontSize: '14px',
-    });
     refs.buttonStart.disabled = true;
 
     refs.daysLeft.style.color = '#f00';
