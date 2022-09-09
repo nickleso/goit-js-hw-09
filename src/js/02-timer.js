@@ -13,6 +13,7 @@ const refs = {
   secondsLeft: document.querySelector('[data-seconds]'),
 };
 
+refs.dateInput.disabled = false;
 refs.buttonStart.disabled = true;
 refs.buttonStart.addEventListener('click', onButtonClickStartTimer);
 
@@ -56,13 +57,15 @@ flatpickr('#datetime-picker', {
 // set interval
 function onButtonClickStartTimer() {
   console.log('Start!');
+  refs.buttonStart.disabled = true;
+  refs.dateInput.disabled = true;
+
   intervalId = setInterval(() => {
     const currentTime = Date.now();
     const deltaTime = startTime - currentTime;
     deadline = deltaTime;
-    refs.buttonStart.disabled = true;
-    // console.log(`Deadline: ${deadline}`);
 
+    // console.log(`Deadline: ${deadline}`);
     convertMs(deadline);
     stopClockface(deadline);
   }, 1000);
@@ -111,6 +114,7 @@ function stopClockface(ms) {
       fontSize: '14px',
     });
     refs.buttonStart.disabled = true;
+    refs.dateInput.disabled = false;
 
     refs.daysLeft.style.color = '#f00';
     refs.hoursLeft.style.color = '#f00';
